@@ -1,0 +1,12 @@
+@startuml Class diagram
+
+class Calculator {
+    - List<int> numbers
+    - int result
+    + Sum()
+    + Sub()
+    + Mul()
+    + Div()
+}
+
+@enduml
