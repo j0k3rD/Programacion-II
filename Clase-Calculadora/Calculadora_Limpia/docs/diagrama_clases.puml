@@ -1,40 +1,52 @@
 @startuml
-interface IOperacion {
-    + calcular(numeros: List<float>): float
+
+class Menu {
+    +showMenu()
+    +showResults()
 }
 
-class Suma {
-    + calcular(numeros: List<float>): float
+class Calculator {
+    - operation: IOperation
+
+    + setOperation(operation: IOperation): void
+    + calculate(nums: List<float>): float
 }
 
-class Resta {
-    + calcular(numeros: List<float>): float
+interface IOperation {
+    - operation: void
+    + calculate(nums: List<float>): float
 }
 
-class Multiplicacion {
-    + calcular(numeros: List<float>): float
+class Add {
+    - operation: 0
+    + calculate(nums: List<float>): float
 }
 
-class Division {
-    + calcular(numeros: List<float>): float
+class Sub {
+    - operation: 1
+    + calculate(nums: List<float>): float
 }
 
-class Calculadora {
-    - operacion: IOperacion
-
-    + setOperacion(operacion: IOperacion): void
-    + calcular(numeros: List<float>): float
+class Multiply {
+    - operation: 2
+    + calculate(nums: List<float>): float
 }
 
-class ManejadorNumeros {
-    + dividirNumeros(input: string): List<float>
+class Divide {
+    -operation: 3
+    + calculate(nums: List<float>): float
 }
 
-Calculadora -> IOperacion
-Calculadora -> ManejadorNumeros
-Calculadora -> Suma
-Calculadora -> Resta
-Calculadora -> Multiplicacion
-Calculadora -> Division
+class GenerateNums {
+    + separateNums(input: string): List<float>
+}
+
+Menu -> Calculator
+Calculator -> IOperation
+IOperation -> GenerateNums
+IOperation -> Add
+IOperation -> Sub
+IOperation -> Multiply
+IOperation -> Divide
 @enduml
 
