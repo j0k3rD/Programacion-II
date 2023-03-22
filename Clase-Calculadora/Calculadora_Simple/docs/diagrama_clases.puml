@@ -8,7 +8,4 @@ class Calculator {
     + Mul()
     + Div()
 }
-
-class 
-
 @enduml
