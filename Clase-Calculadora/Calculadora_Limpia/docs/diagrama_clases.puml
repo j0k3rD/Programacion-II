@@ -1,12 +1,40 @@
-@startuml Class diagram
-
-class Calculator {
-    - List<int> numbers
-    - int result
-    + Sum()
-    + Sub()
-    + Mul()
-    + Div()
+@startuml
+interface IOperacion {
+    + calcular(numeros: List<float>): float
 }
 
+class Suma {
+    + calcular(numeros: List<float>): float
+}
+
+class Resta {
+    + calcular(numeros: List<float>): float
+}
+
+class Multiplicacion {
+    + calcular(numeros: List<float>): float
+}
+
+class Division {
+    + calcular(numeros: List<float>): float
+}
+
+class Calculadora {
+    - operacion: IOperacion
+
+    + setOperacion(operacion: IOperacion): void
+    + calcular(numeros: List<float>): float
+}
+
+class ManejadorNumeros {
+    + dividirNumeros(input: string): List<float>
+}
+
+Calculadora -> IOperacion
+Calculadora -> ManejadorNumeros
+Calculadora -> Suma
+Calculadora -> Resta
+Calculadora -> Multiplicacion
+Calculadora -> Division
 @enduml
+
