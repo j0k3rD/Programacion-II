@@ -18,7 +18,6 @@ public class Menu {
             System.out.println(calculator.calculate(option));
 
             if (option == 5) {
-                System.out.println(Constants.EXIT_MESSAGE);
                 break;
             }
         }
